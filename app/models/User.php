@@ -7,7 +7,6 @@ class User extends Model
 {
     public const TABLE = 'users';
 
-    public $id;
     public $name;
     public $email;
 

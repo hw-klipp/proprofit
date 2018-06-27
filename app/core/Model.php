@@ -2,12 +2,22 @@
 
 namespace app\core;
 
+/**
+ * Class Model
+ * @package app\core
+ * @implements CRUDInterface
+ * @property string TABLE constant
+ * @property int $id
+ */
 abstract class Model implements CRUDInterface
 {
     public const TABLE = '';
 
     public $id;
 
+    /**
+     * @return array models
+     */
     public static function findAll()
     {
         $db = new Db();
@@ -19,6 +29,10 @@ abstract class Model implements CRUDInterface
         );
     }
 
+    /**
+     * @param int $id
+     * @return model or false
+     */
     public static function findByID($id) {
         $db = new Db();
 
@@ -35,6 +49,9 @@ abstract class Model implements CRUDInterface
         }
     }
 
+    /**
+     * @return true if method executed successfully or return false
+     */
     public function insert()
     {
         $db = new Db();
@@ -71,7 +88,9 @@ abstract class Model implements CRUDInterface
         }
     }
 
-
+    /**
+     * @return true if method executed successfully or return false
+     */
     public function update()
     {
         $db = new Db();
@@ -108,6 +127,9 @@ abstract class Model implements CRUDInterface
         return $db->execute($sql, $params);
     }
 
+    /**
+     * @return true or false depending on the success
+     */
     public function save()
     {
         if(self::findByID($this->id)) {
@@ -117,6 +139,9 @@ abstract class Model implements CRUDInterface
         return $this->insert();
     }
 
+    /**
+     * @return true or false depending on the success
+     */
     public function delete()
     {
         $db = new Db();

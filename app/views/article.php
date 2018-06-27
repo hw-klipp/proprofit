@@ -19,9 +19,9 @@
 </ul>
 <br>
 
-<h1><?= $article->title ?></h1>
-<p><?= $article->date; ?></p>
-<p><?= $article->content; ?></p>
+<h1><?= $this->article->title ?></h1>
+<p><?= $this->article->date; ?> <?= $this->article->author->name ?? null ?></p>
+<p><?= $this->article->content; ?></p>
 
 </body>
 </html>

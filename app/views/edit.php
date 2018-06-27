@@ -14,11 +14,15 @@
         <input type="hidden" name="id" value="<?=$_GET['id']?>">
         <p><label>Название</label></p>
         <p>
-            <input type="text" name="title" value="<?= $article->title; ?>">
+            <input type="text" name="title" value="<?= $this->article->title; ?>">
+        </p>
+        <p><label>Автор</label></p>
+        <p>
+            <input type="text" name="author" value="<?= $this->article->author->name; ?>">
         </p>
         <p><label>Описание</label></p>
         <p>
-            <textarea name="content" cols="50" rows="7"><?= $article->content; ?></textarea>
+            <textarea name="content" cols="50" rows="7"><?= $this->article->content; ?></textarea>
         </p>
         <p>
             <button type="submit">Изменить</button>

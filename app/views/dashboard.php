@@ -38,6 +38,10 @@
         <p>
             <input type="text" name="title">
         </p>
+        <p><label>Автор</label></p>
+        <p>
+            <input type="text" name="author">
+        </p>
         <p><label>Описание</label></p>
         <p>
             <textarea name="content"  cols="50" rows="7"></textarea>
@@ -53,14 +57,16 @@
             <tr >
                 <th>id</th>
                 <th>Название</th>
+                <th>Автор</th>
                 <th>Действия</th>
             </tr>
         </thead>
         <tbody>
-        <?php foreach($news as $article): ?>
+        <?php foreach($this->news as $article): ?>
             <tr>
                 <td><?= $article->id; ?></td>
                 <td><a href="/article.php?id=<?= $article->id; ?>"><?= $article->title; ?></a></td>
+                <td><?= $article->author->name ?? null ?></td>
                 <td>
                     <a href="/admin.php?action=delete&id=<?= $article->id; ?>">Удалить</a>
                     <a href="/edit.php?id=<?= $article->id; ?>">Редактировать</a>

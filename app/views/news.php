@@ -17,10 +17,10 @@
 
 <h2>Новости</h2>
 
-<?php foreach($news as $article): ?>
+<?php foreach($this->news as $article): ?>
     <article>
         <h3><a href="/article.php?id=<?= $article->id; ?>"><?= $article->title; ?></a></h3>
-        <p><?= $article->date; ?></p>
+        <p><?= $article->date; ?> <?= $article->author->name ?? null ?></p>
         <p><?= $article->content; ?></p>
     </article>
     <hr>
