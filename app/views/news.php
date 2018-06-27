@@ -9,6 +9,12 @@
 </head>
 <body>
 
+<ul>
+    <li>
+        <a href="/admin.php">Админ-панель</a>
+    </li>
+</ul>
+
 <h2>Новости</h2>
 
 <?php foreach($news as $article): ?>

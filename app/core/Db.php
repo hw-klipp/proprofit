@@ -30,7 +30,8 @@ class Db
     public function execute($sql, $data = [])
     {
         $sth = $this->dbh->prepare($sql);
-        return $sth->execute($data);
+
+        $sth->execute($data);
     }
 
     public function getLastId()

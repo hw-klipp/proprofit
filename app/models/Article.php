@@ -6,7 +6,7 @@ use app\core\CRUDInterface;
 use app\core\Db;
 use app\core\Model;
 
-class Article extends Model
+class Article extends Model implements CRUDInterface
 {
     public const TABLE = 'news';
 
@@ -17,12 +17,12 @@ class Article extends Model
     public static function latestNews()
     {
         $db = new Db();
-        $sql = 'SELECT * FROM ' . self::TABLE . ' ORDER BY date DESC LIMIT 3';
+
         return $db->query(
-            $sql,
+            'SELECT * FROM ' . self::TABLE . ' ORDER BY date DESC LIMIT 3',
             self::class,
             []
         );
     }
-
+    
 }

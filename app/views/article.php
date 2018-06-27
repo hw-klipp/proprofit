@@ -9,8 +9,14 @@
 </head>
 <body>
 
-<a href="/index.php">Главная</a>
-
+<ul>
+    <li>
+        <a href="/index.php">Главная</a>
+    </li>
+    <li>
+        <a href="/admin.php">Админ-панель</a>
+    </li>
+</ul>
 <br>
 
 <h1><?= $article->title ?></h1>
