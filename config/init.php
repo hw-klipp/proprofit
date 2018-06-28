@@ -1,7 +1,7 @@
 <?php
 
 spl_autoload_register(function ($class) {
-    $path = realpath(__DIR__ . '/../../' . str_replace('\\', '/', $class) . '.php');
+    $path = realpath(__DIR__ . '/../' . str_replace('\\', '/' , $class) . '.php');
 
     require $path;
 });

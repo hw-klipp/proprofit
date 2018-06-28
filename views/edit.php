@@ -10,8 +10,8 @@
 <body>
 
     <h1>Редактирование статьи</h1>
-    <form action="/edit.php" method="POST">
-        <input type="hidden" name="id" value="<?=$_GET['id']?>">
+    <form action="/update" method="POST">
+        <input type="hidden" name="id" value="<?=str_replace('/edit/', '', $_SERVER['REQUEST_URI'])?>">
         <p><label>Название</label></p>
         <p>
             <input type="text" name="title" value="<?= $this->article->title; ?>">

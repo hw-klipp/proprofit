@@ -11,7 +11,7 @@
 
 <ul>
     <li>
-        <a href="/admin.php">Админ-панель</a>
+        <a href="/dashboard">Админ-панель</a>
     </li>
 </ul>
 
@@ -19,7 +19,7 @@
 
 <?php foreach($this->news as $article): ?>
     <article>
-        <h3><a href="/article.php?id=<?= $article->id; ?>"><?= $article->title; ?></a></h3>
+        <h3><a href="/article/<?= $article->id; ?>"><?= $article->title; ?></a></h3>
         <p><?= $article->date; ?> <?= $article->author->name ?? null ?></p>
         <p><?= $article->content; ?></p>
     </article>

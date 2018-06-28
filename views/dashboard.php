@@ -28,12 +28,12 @@
 
     <ul>
         <li>
-            <a href="/index.php">Главная</a>
+            <a href="/news">Главная</a>
         </li>
     </ul>
     <h1>Админ-панель</h1>
 
-    <form action="/admin.php" method="POST">
+    <form action="/add" method="POST">
         <p><label>Название</label></p>
         <p>
             <input type="text" name="title">
@@ -65,11 +65,11 @@
         <?php foreach($this->news as $article): ?>
             <tr>
                 <td><?= $article->id; ?></td>
-                <td><a href="/article.php?id=<?= $article->id; ?>"><?= $article->title; ?></a></td>
+                <td><a href="../index.php"><?= $article->title; ?></a></td>
                 <td><?= $article->author->name ?? null ?></td>
                 <td>
-                    <a href="/admin.php?action=delete&id=<?= $article->id; ?>">Удалить</a>
-                    <a href="/edit.php?id=<?= $article->id; ?>">Редактировать</a>
+                    <a href="/delete/<?= $article->id; ?>">Удалить</a>
+                    <a href="/edit/<?= $article->id; ?>">Редактировать</a>
                 </td>
             </tr>
         <?php endforeach; ?>

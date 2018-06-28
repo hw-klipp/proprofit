@@ -11,10 +11,10 @@
 
 <ul>
     <li>
-        <a href="/index.php">Главная</a>
+        <a href="/news">Главная</a>
     </li>
     <li>
-        <a href="/admin.php">Админ-панель</a>
+        <a href="/dashboard">Админ-панель</a>
     </li>
 </ul>
 <br>
