@@ -9,18 +9,22 @@ class Db
     public function __construct()
     {
         $data = include CONF . 'db.php';
-        $this->dbh = new \PDO(
-            "mysql:host={$data['host']}; dbname={$data['dbname']}",
-            $data['login'],
-            $data['password']
-        );
+
+
+            $this->dbh = new \PDO(
+                "mysql:host={$data['host']}; dbname={$data['dbname']}",
+                $data['login'],
+                $data['password']
+            );
+
     }
 
     public function query($sql, $class, $data = [])
     {
+
         $sth = $this->dbh->prepare($sql);
 
-        if($sth->execute($data)) {
+        if ($sth->execute($data)) {
             return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
         }
 

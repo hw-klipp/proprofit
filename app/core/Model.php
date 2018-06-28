@@ -33,16 +33,17 @@ abstract class Model implements CRUDInterface
      * @param int $id
      * @return model or false
      */
-    public static function findByID($id) {
+    public static function findByID($id)
+    {
         $db = new Db();
 
-        $result =  $db->query(
+        $result = $db->query(
             'SELECT * FROM ' . static::TABLE . ' WHERE id=' . $id,
             static::class,
             []
         );
 
-        if(!empty($result)) {
+        if (!empty($result)) {
             return $result[0];
         } else {
             return false;
@@ -61,11 +62,11 @@ abstract class Model implements CRUDInterface
         $params = [];
 
         foreach ($data as $k => $v) {
-            if('id' == $k) {
+            if ('id' == $k) {
                 continue;
             }
 
-            if('date' == $k) {
+            if ('date' == $k) {
                 $cols[] = $k;
                 $params[':' . $k] = date('Y-m-d H:i:s', time());
                 continue;
@@ -76,11 +77,11 @@ abstract class Model implements CRUDInterface
         }
 
         $sql = 'INSERT INTO ' . static::TABLE .
-            ' ('. implode(',', $cols) .') ' .
-            'VALUES ('. implode(',', array_keys($params)) .')';
+            ' (' . implode(',', $cols) . ') ' .
+            'VALUES (' . implode(',', array_keys($params)) . ')';
 
 
-        if($db->execute($sql, $params)) {
+        if ($db->execute($sql, $params)) {
             $this->id = $db->getLastId();
             return true;
         } else {
@@ -101,11 +102,11 @@ abstract class Model implements CRUDInterface
         $str = '';
 
         foreach ($data as $k => $v) {
-            if('id' == $k) {
+            if ('id' == $k) {
                 continue;
             }
 
-            if('date' == $k) {
+            if ('date' == $k) {
                 $params[':' . $k] = date('Y-m-d H:i:s', time());
                 $vals[$k] = ':' . $k;
                 continue;
@@ -116,13 +117,13 @@ abstract class Model implements CRUDInterface
         }
 
 
-        foreach($vals as $k => $v) {
+        foreach ($vals as $k => $v) {
             $str .= $k . '=' . $v . ', ';
         }
 
-        $str = substr($str, 0, strlen($str)-2);
+        $str = substr($str, 0, strlen($str) - 2);
 
-        $sql = 'UPDATE ' . static::TABLE . ' SET '. $str .' WHERE id=' . $this->id;
+        $sql = 'UPDATE ' . static::TABLE . ' SET ' . $str . ' WHERE id=' . $this->id;
 
         return $db->execute($sql, $params);
     }
@@ -132,7 +133,7 @@ abstract class Model implements CRUDInterface
      */
     public function save()
     {
-        if(self::findByID($this->id)) {
+        if (self::findByID($this->id)) {
             return $this->update();
         }
 
